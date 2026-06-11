@@ -4,6 +4,9 @@
 #
 # image_name은 다운로드할 Docker 이미지 이름입니다.
 def make_docker_pull_command(image_name):
+
+    return f"docker pull {image_name}"
+
     raise NotImplementedError
 
 
@@ -13,6 +16,9 @@ def make_docker_pull_command(image_name):
 #
 # image_name은 실행할 Docker 이미지 이름입니다.
 def make_docker_run_command(image_name):
+
+    return f"docker run {image_name}"
+
     raise NotImplementedError
 
 
@@ -29,6 +35,8 @@ def make_port_mapping_command(
     host_port,
     container_port,
 ):
+    return f"docker run -p {image_name} {host_port}:{container_port}"
+
     raise NotImplementedError
 
 
@@ -45,6 +53,9 @@ def make_volume_mapping_command(
     container_dir,
     image_name,
 ):
+
+    return f"docker run -v {host_dir}:{container_dir} {image_name}"
+
     raise NotImplementedError
 
 
@@ -66,4 +77,7 @@ def make_compose_service(
     host_port,
     container_port,
 ):
+
+    return f"{service_name}: image:{image_name} ports: {host_port}:{container_port}"
+
     raise NotImplementedError
